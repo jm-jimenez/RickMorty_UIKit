@@ -43,7 +43,7 @@ struct NetworkClient: NetworkClientProtocol {
 private extension NetworkClient {
     func buildRequest(from: NetworkRequest) -> URLRequest? {
         guard let url = URL(string: from.url) else { return nil }
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData)
+        var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         request.httpMethod = from.method.rawValue
         return request
     }
